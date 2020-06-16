@@ -23,12 +23,12 @@ public class DetalleVenta
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_venta", nullable = false, foreignKey = @ForeignKey(name = "FK_VENTA_DETALLE"))
-	private Venta idVenta;
+	private Venta venta;
 	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_producto", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCTO_VENTA"))
-	private Producto idProducto;
+	private Producto producto;
 	
 	@Column(name = "cantidad", nullable = false)
 	private Integer cantidad;
@@ -43,24 +43,24 @@ public class DetalleVenta
 		this.idDetalleVenta = idDetalleVenta;
 	}
 
-	public Venta getIdVenta()
+	public Venta getVenta()
 	{
-		return idVenta;
+		return venta;
 	}
 
-	public void setIdVenta(Venta idVenta)
+	public void setVenta(Venta venta)
 	{
-		this.idVenta = idVenta;
+		this.venta = venta;
 	}
 
-	public Producto getIdProducto()
+	public Producto getProducto()
 	{
-		return idProducto;
+		return producto;
 	}
 
-	public void setIdProducto(Producto idProducto)
+	public void setProducto(Producto producto)
 	{
-		this.idProducto = idProducto;
+		this.producto = producto;
 	}
 
 	public Integer getCantidad()
