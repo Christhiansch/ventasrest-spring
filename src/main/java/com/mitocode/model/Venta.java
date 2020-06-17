@@ -6,9 +6,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,13 +26,14 @@ public class Venta
 	@Column(name = "fecha", nullable = false)
 	private LocalDateTime fecha;
 	
-	@Column(name = "id_persona", nullable = false)
-	private Persona idPersona;
+	@ManyToOne
+	@JoinColumn(name = "id_persona", nullable = false, foreignKey = @ForeignKey(name = "FK_VENTA_PERSONA"))
+	private Persona persona;
 	
 	@Column(name = "importe", nullable = false)
 	private Double importe;
 	
-	@OneToMany(mappedBy = "idVenta", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@OneToMany(mappedBy = "venta", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<DetalleVenta> detalleVenta;
 
 	public Integer getIdVenta()
@@ -52,14 +56,14 @@ public class Venta
 		this.fecha = fecha;
 	}
 
-	public Persona getIdPersona()
+	public Persona getPersona()
 	{
-		return idPersona;
+		return persona;
 	}
 
-	public void setIdPersona(Persona idPersona)
+	public void setIdPersona(Persona persona)
 	{
-		this.idPersona = idPersona;
+		this.persona = persona;
 	}
 
 	public Double getImporte()

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.mitocode.model.Persona;
 import com.mitocode.repo.IGenericRepo;
-import com.mitocode.repo.IPersona;
+import com.mitocode.repo.IPersonaRepo;
 import com.mitocode.service.IPersonaService;
 
 @Service
@@ -13,7 +13,7 @@ public class PersonaServiceImpl extends CRUDImpl<Persona, Integer> implements IP
 {
 	
 	@Autowired
-	private IPersona personaRepo;
+	private IPersonaRepo personaRepo;
 
 	@Override
 	protected IGenericRepo<Persona, Integer> genericRepo()

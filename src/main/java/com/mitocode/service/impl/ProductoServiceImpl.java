@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.mitocode.model.Producto;
 import com.mitocode.repo.IGenericRepo;
-import com.mitocode.repo.IProducto;
+import com.mitocode.repo.IProductoRepo;
 import com.mitocode.service.IProductoService;
 
 @Service
@@ -13,7 +13,7 @@ public class ProductoServiceImpl extends CRUDImpl<Producto, Integer> implements 
 {
 
 	@Autowired
-	private IProducto productoRepo;
+	private IProductoRepo productoRepo;
 	
 	@Override
 	protected IGenericRepo<Producto, Integer> genericRepo()

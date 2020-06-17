@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mitocode.model.DetalleVenta;
-import com.mitocode.repo.IDetalleVenta;
+import com.mitocode.repo.IDetalleVentaRepo;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.service.IDetalleVentaService;
 
@@ -13,7 +13,7 @@ public class DetalleVentaServiceImpl extends CRUDImpl<DetalleVenta, Integer> imp
 {
 
 	@Autowired
-	private IDetalleVenta dtlleVentaRepo;
+	private IDetalleVentaRepo dtlleVentaRepo;
 	
 	@Override
 	protected IGenericRepo<DetalleVenta, Integer> genericRepo()
