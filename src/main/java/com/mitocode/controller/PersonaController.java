@@ -47,7 +47,7 @@ public class PersonaController
 		{
 			throw new ModelNotFoundException("Id No encontrado: " + id);
 		}
-		return new ResponseEntity<Persona>(persona, HttpStatus.CREATED);
+		return new ResponseEntity<Persona>(persona, HttpStatus.OK);
 	}
 	
 	//Nivel 3 de Madurez de Richardson
