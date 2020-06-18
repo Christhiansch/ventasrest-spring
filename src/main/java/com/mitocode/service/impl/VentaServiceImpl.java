@@ -1,11 +1,9 @@
 package com.mitocode.service.impl;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mitocode.dto.DetalleVentaDTO;
 import com.mitocode.model.Venta;
 import com.mitocode.repo.IGenericRepo;
 import com.mitocode.repo.IVentaRepo;
@@ -23,9 +21,7 @@ public class VentaServiceImpl extends CRUDImpl<Venta, Integer> implements IVenta
 	{
 		return ventaRepo;
 	}
-
-	@Override
-	@Transactional
+	
 	public Venta registrarTransaccional(Venta venta) throws Exception
 	{
 		

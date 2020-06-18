@@ -25,7 +25,6 @@ public class DetalleVenta
 	@JoinColumn(name = "id_venta", nullable = false, foreignKey = @ForeignKey(name = "FK_VENTA_DETALLE"))
 	private Venta venta;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_producto", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCTO_VENTA"))
 	private Producto producto;

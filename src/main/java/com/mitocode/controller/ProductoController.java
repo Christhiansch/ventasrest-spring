@@ -51,15 +51,10 @@ public class ProductoController
 		return new ResponseEntity<Producto>(prod, HttpStatus.OK);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping()
 	public ResponseEntity<Producto> modificar(@RequestBody Producto obj, @PathVariable("id") Integer id) throws Exception
 	{
-		Producto prod = productoService.listarPorId(id);
-		if (prod == null)
-		{
-			throw new ModelNotFoundException("ID no encontrado: " + id);
-		}
-		prod = productoService.modificar(obj);
+		Producto prod = productoService.modificar(obj);
 		return new ResponseEntity<Producto>(prod, HttpStatus.OK);
 	}
 
