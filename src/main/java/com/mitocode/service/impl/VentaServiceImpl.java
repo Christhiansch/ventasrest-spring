@@ -26,13 +26,11 @@ public class VentaServiceImpl extends CRUDImpl<Venta, Integer> implements IVenta
 
 	@Override
 	@Transactional
-	public Venta registrarTransaccional(DetalleVentaDTO ventaDTO) throws Exception
+	public Venta registrarTransaccional(Venta venta) throws Exception
 	{
 		
-		ventaDTO.getVenta().getDetalleVenta().forEach(dt -> dt.setVenta(ventaDTO.getVenta()));
-		ventaRepo.save(ventaDTO.getVenta());
-		
-		return ventaDTO.getVenta();
+		venta.getDetalleVenta().forEach(det -> det.setVenta(venta));			
+		return ventaRepo.save(venta);
 	}
 	
 

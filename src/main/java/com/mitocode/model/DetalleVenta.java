@@ -13,23 +13,23 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "detalle_ventas" )
+@Table(name = "detalle_ventas")
 public class DetalleVenta
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idDetalleVenta;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_venta", nullable = false, foreignKey = @ForeignKey(name = "FK_VENTA_DETALLE"))
 	private Venta venta;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_producto", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCTO_VENTA"))
 	private Producto producto;
-	
+
 	@Column(name = "cantidad", nullable = false)
 	private Integer cantidad;
 
@@ -72,5 +72,13 @@ public class DetalleVenta
 	{
 		this.cantidad = cantidad;
 	}
+	
+	//VENTA
+	//ID		FECHA				IMPORTE			IDPERSONA
+	//1			2020-06-18	40					1
 
+	//DETALLE VENTA
+	//ID		ID_VENTA		ID_PRODUCTO			CANTIDAD
+	//1			1						1								2
+	//2			1						2								3	
 }

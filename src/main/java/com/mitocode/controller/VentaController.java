@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,37 +26,21 @@ public class VentaController
 	@Autowired
 	private IVentaService ventaService;
 
+	@GetMapping
 	public ResponseEntity<List<Venta>> listar() throws Exception
 	{
 		List<Venta> lista = ventaService.listar();
 		return new ResponseEntity<List<Venta>>(lista, HttpStatus.OK);
 	}
 
-	public ResponseEntity<Venta> registrar(@RequestBody DetalleVentaDTO dto) throws Exception
+	@PostMapping
+	public ResponseEntity<Venta> registrar(@RequestBody Venta venta) throws Exception
 	{
-		Venta venta = ventaService.registrarTransaccional(dto);
+		Venta vt = ventaService.registrarTransaccional(venta);
 		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(venta.getIdVenta()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(vt.getIdVenta()).toUri();
 		
 		return ResponseEntity.created(location).build();
 	}
-
-	public ResponseEntity<Venta> listarPorId(Integer id) throws Exception
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ResponseEntity<Venta> modificar(Venta obj, @PathVariable("id") Integer id) throws Exception
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ResponseEntity<Void> eliminar(Integer id) throws Exception
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
